@@ -28,7 +28,7 @@
         "echonest/echonest": "dev-master",
         "liip/imagine-bundle": "dev-master"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
             "dev-master": "2.3-dev"
