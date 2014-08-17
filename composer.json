@@ -13,20 +13,20 @@
     "require": {
         "php": ">=5.3.2",
         "symfony/framework-bundle": "~2.3",
-        "components/bootstrap": "3.2.*@dev",
-        "components/font-awesome": "4.1.*@dev",
-        "components/jqueryui": "1.11.*@dev",
+        "components/bootstrap": "3.2.*",
+        "components/font-awesome": "4.1.*",
+        "components/jqueryui": "1.11.*",
         "components/jquery": "1.*",
-        "components/jqueryui-theme-bootstrap": "dev-master@dev",
-        "components/jplayer": "dev-master@dev",
+        "components/jqueryui-theme-bootstrap": "*",
+        "components/jplayer": "*",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
-        "blueimp/jquery-file-upload": "9.7.*@dev",
-        "stof/doctrine-extensions-bundle": "1.1.*@dev",
-        "nass600/get-id3": "dev-master@dev",
-        "nass600/Lyrics-bundle": "dev-master@dev",
+        "blueimp/jquery-file-upload": "9.7.*",
+        "stof/doctrine-extensions-bundle": "1.1.*",
+        "nass600/get-id3": "*",
+        "nass600/Lyrics-bundle": "*",
         "ricbra/discogs-bundle": "~1.0.0",
-        "echonest/echonest": "dev-master@dev",
-        "liip/imagine-bundle": "1.0.*@dev"
+        "echonest/echonest": "*",
+        "liip/imagine-bundle": "1.0.*"
     },
     "autoload": {
         "psr-0" : {
