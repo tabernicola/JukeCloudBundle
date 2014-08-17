@@ -3,6 +3,7 @@ var Playlist= function(selector){
     this.nextId=0;
     this.tempId=0;
     this.shuffle=false;
+    this.repeat=false;
     this.numElements=0;
     
     $(this.selector).sortable();
@@ -45,12 +46,25 @@ var Playlist= function(selector){
         $('#active-shuffle').hide();
         $('#disable-shuffle').show();
         playlist.refreshPlaylist();
-    })
+    });
     
     $('#disable-shuffle').bind("click",function( event ) {
         playlist.shuffle=false;  
         $('#disable-shuffle').hide();
         $('#active-shuffle').show();
+    });
+    
+    $('#active-repeat').bind("click",function( event ) {
+        playlist.repeat=true;
+        $('#active-repeat').hide();
+        $('#disable-repeat').show();
+        playlist.refreshPlaylist();
+    })
+    
+    $('#disable-repeat').bind("click",function( event ) {
+        playlist.repeat=false;  
+        $('#disable-repeat').hide();
+        $('#active-repeat').show();
     })
 }
 
@@ -138,7 +152,13 @@ $.extend(Playlist.prototype,{
             this.playSong($(this.selector).children().not('div[id^=temp]').first().attr('id'));
         }
         else{
-            this.playSong($('#'+current).next().attr('id'));
+            var lastId=$(this.selector).children().not('div[id^=temp]').last().attr('id');
+            if (this.repeat && current==lastId){
+                this.playSong($(this.selector).children().not('div[id^=temp]').first().attr('id'));
+            }
+            else{
+                this.playSong($('#'+current).next().attr('id'));
+            }
         }
         this.refreshPlaylist();
     },

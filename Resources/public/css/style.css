@@ -94,10 +94,7 @@ body {
 
 .ui-autocomplete {z-index: 1100;}
 
-#disable-shuffle{display:none}
-#active-shuffle,#disable-shuffle{
-    color: black
-}
+#disable-shuffle, #disable-repeat{display:none}
 
 #center-panel .well{padding-top: 0px}
 #info-panel{height:100px}
