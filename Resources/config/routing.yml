@@ -1,0 +1,85 @@
+tabernicola_juke_cloud_homepage:
+    pattern:  /
+    defaults: { _controller: TabernicolaJukeCloudBundle:Home:index }
+
+tabernicola_juke_cloud_types:
+    pattern:  /ajax/types/
+    defaults: { _controller: TabernicolaJukeCloudBundle:Home:types }
+
+tabernicola_juke_cloud_artists:
+    pattern:  /ajax/artists/
+    defaults: { _controller: TabernicolaJukeCloudBundle:Home:artists }
+
+tabernicola_juke_cloud_artist_disks:
+    pattern:  /ajax/artist-{id}/
+    defaults: { _controller: TabernicolaJukeCloudBundle:Home:artistDisks }
+    requirements:
+        id: \d+
+        
+tabernicola_juke_cloud_disk_songs:
+    pattern:  /ajax/disk-{id}/
+    defaults: { _controller: TabernicolaJukeCloudBundle:Home:diskSongs }
+    requirements:
+        id: \d+
+        
+tabernicola_juke_cloud_song:
+    pattern:  /song-{id}
+    defaults: { _controller: TabernicolaJukeCloudBundle:Content:song }
+    requirements:
+        id: \d+
+        
+tabernicola_juke_cloud_playlist_artist:
+    pattern:  /playlist/artist-{id}
+    defaults: { _controller: TabernicolaJukeCloudBundle:Playlist:artist }
+    requirements:
+        id: \d+
+        
+tabernicola_juke_cloud_playlist_disk:
+    pattern:  /playlist/disk-{id}
+    defaults: { _controller: TabernicolaJukeCloudBundle:Playlist:disk }
+    requirements:
+        id: \d+
+        
+tabernicola_juke_cloud_playlist_song:
+    pattern:  /playlist/song-{id}
+    defaults: { _controller: TabernicolaJukeCloudBundle:Playlist:song }
+    requirements:
+        id: \d+
+
+tabernicola_juke_cloud_playlist_random_song:
+    pattern:  /playlist/random
+    defaults: { _controller: TabernicolaJukeCloudBundle:Playlist:randomSong }
+
+tabernicola_juke_cloud_library_no_filter:
+    pattern:  /library/filter/
+    defaults: { _controller: TabernicolaJukeCloudBundle:Home:filter }
+
+tabernicola_juke_cloud_library_filter:
+    pattern:  /library/filter/{search}
+    defaults: { _controller: TabernicolaJukeCloudBundle:Home:filter }
+
+tabernicola_juke_cloud_upload:
+    pattern:  /upload
+    defaults: { _controller: TabernicolaJukeCloudBundle:Upload:index}
+    
+tabernicola_juke_cloud_list_artist:
+    pattern:  /list/artists/
+    defaults: { _controller: TabernicolaJukeCloudBundle:List:artists }
+        
+tabernicola_juke_cloud_list_disk:
+    pattern:  /list/disks/
+    defaults: { _controller: TabernicolaJukeCloudBundle:List:disks}
+        
+tabernicola_juke_cloud_list_song:
+    pattern:  /list/songs/
+    defaults: { _controller: TabernicolaJukeCloudBundle:List:songs }
+
+
+tabernicola_juke_cloud_info_song:
+    pattern:  /info/song-{id}
+    defaults: { _controller: TabernicolaJukeCloudBundle:Info:song }
+    requirements:
+        id: \d+
+        
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

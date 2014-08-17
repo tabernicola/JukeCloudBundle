@@ -1,0 +1,64 @@
+Tabernicola\JukeCloudBundle\Entity\Song:
+    type: entity
+    table: Song
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        path:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        number:
+            type: smallint
+            comment: ''
+        slug:
+            type: string
+            length: 255
+            gedmo:
+                slug:
+                    separator: "-"
+                    fields:
+                        - title
+                    unique: false
+        created:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        type:
+            type: string
+            length: 16
+            options:
+                default: local
+    manyToOne:
+        disk:
+            targetEntity: Disk
+            inversedBy: songs
+            cascade: ["persist"]
+        artist:
+            targetEntity: Artist
+            inversedBy: songs
+            cascade: ["persist"]
+    lifecycleCallbacks: {  }
+    repositoryClass: Tabernicola\JukeCloudBundle\Entity\SongRepository
+  

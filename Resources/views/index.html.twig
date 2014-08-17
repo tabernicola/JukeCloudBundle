@@ -1,0 +1,100 @@
+<html class="ext-strict x-viewport" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>{%block title %}JukeCloud{% endblock %}</title>
+        {%block metas %}
+            <meta content="text/html; charset=utf-8"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        {% endblock %}
+
+        {% block styles %}
+            <link rel="stylesheet" href="{{ asset(components_folder ~ 'jquery-ui/themes/smoothness/jquery-ui.css')}}"/>
+            <link rel="stylesheet" href="{{ asset(components_folder ~ 'bootstrap/css/bootstrap.min.css')}}"/>
+            <link rel="stylesheet" href="{{ asset(components_folder ~ 'font-awesome/css/font-awesome.min.css')}}"/>
+            <link rel="stylesheet" href="{{ asset(components_folder ~ 'jqueryui-theme-bootstrap/jquery-ui-1.10.3.theme.css')}}"/>
+            <link rel="stylesheet" href="{{ asset(components_folder ~ 'jqueryui-theme-bootstrap/jquery.ui.theme.font-awesome.css')}}"/>
+            <link rel="stylesheet" href="{{ asset(components_folder ~ 'jquery-ui/themes/base/slider.css')}}"/>
+            <link rel="stylesheet" href="{{ asset('bundles/tabernicolajukecloud/player-skin/style.css')}}"/>
+            <link rel="stylesheet" href="{{ asset('bundles/tabernicolajukecloud/css/style.css')}}"/>
+            <link rel="stylesheet" href="{{ asset('bundles/tabernicolajukecloud/css/jquery-slider.css')}}"/>
+            <link rel="stylesheet" href="/jstree/themes/default/style.min.css" />
+            <link rel="stylesheet" href="/blueimp-fileupload/css/jquery.fileupload.css" />
+            <link rel="stylesheet" href="/blueimp-fileupload/css/jquery.fileupload-ui.css" />
+            <!--[if IE]>
+            <link rel="stylesheet" href="{{ asset(components_folder ~ 'jqueryui-theme-bootstrap/jquery.ui.1.10.3.ie.css')}}"/>
+            <link rel="stylesheet" href="{{ asset('bundles/tabernicolajukecloud/css/ie.css')}}"/>
+            <![endif]-->
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        <!--CONTROLS-->
+        {%block controls %}
+            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container-fluid">
+                    {{ include('TabernicolaJukeCloudBundle:Blocks:_controls.html.twig')}}
+                </div> 
+            </div>    
+        {% endblock %}
+
+        <div class="container-fluid">
+            <div id="main-panel" class="row">
+                <!--nav (left column)--> 
+                {%block nav %}
+                    <div id="left-panel" class="col-sm-3 col-md-3 sidebar panel">   
+                        {{ include('TabernicolaJukeCloudBundle:Blocks:_nav.html.twig')}}
+                    </div>
+                {% endblock %}
+
+                <!--BROWSER (central column -->
+                {%block browser %}
+                    <div id="center-panel" class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 main panel sidebar">
+                        {{ include('TabernicolaJukeCloudBundle:Blocks:_browser.html.twig')}}
+                    </div>
+                {% endblock %}
+
+                <!--Playlist cover lirycs (right column)-->
+                {%block playlist %}
+                    <div id="right-panel" class="col-sm-3 col-sm-offset-9 panel col-md-3 col-md-offset-9 sidebar">    
+                        {{ include('TabernicolaJukeCloudBundle:Blocks:_playlist.html.twig')}}
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+
+        {% block javascript %}
+            {{ include('TabernicolaJukeCloudBundle:Blocks:_upload.html.twig')}}
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="{{ asset(components_folder ~ 'jquery/jquery.min.js') }}"></script>
+            <script src="{{ asset(components_folder ~ 'bootstrap/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset(components_folder ~ 'jquery-ui/jquery-ui.min.js') }}"></script>
+            <script src="{{ asset(components_folder ~ 'jquery-ui/ui/jquery.ui.slider.js') }}"></script>
+            <script src="{{ asset('bundles/tabernicolajukecloud/js/id3v2.js') }}"></script>
+            <script src="{{ asset(components_folder ~ 'jplayer/jquery.jplayer/jquery.jplayer.js') }}"></script>
+            <script src="jstree/jstree.js"></script>
+            <!-- The Templates plugin is included to render the upload/download listings -->
+            <script src="{{ asset('bundles/tabernicolajukecloud/js/template.js')}}"></script>
+            <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+            <script src="/blueimp-fileupload/js/jquery.iframe-transport.js"></script>
+            <!-- The basic File Upload plugin -->
+            <script src="/blueimp-fileupload/js/jquery.fileupload.js"></script>
+            <!-- The File Upload processing plugin -->
+            <script src="/blueimp-fileupload/js/jquery.fileupload-process.js"></script>
+            <!-- The File Upload audio preview plugin -->
+            <script src="{{ asset('bundles/tabernicolajukecloud/js/fileupload-audio.js') }}"></script>
+            <!-- The File Upload video preview plugin 
+            <script src="js/jquery.fileupload-video.js"></script>-->
+            <!-- The File Upload validation plugin -->
+            <script src="/blueimp-fileupload/js/jquery.fileupload-validate.js"></script>
+            <!-- The File Upload user interface plugin -->
+            <script src="/blueimp-fileupload/js/jquery.fileupload-ui.js"></script>
+            <script src="{{ asset('bundles/tabernicolajukecloud/js/init.js') }}"></script>
+            <script src="{{ asset('bundles/tabernicolajukecloud/js/playlist.js') }}"></script>
+            <script src="{{ asset('bundles/tabernicolajukecloud/js/library.js') }}"></script>
+            <script src="{{ asset('bundles/tabernicolajukecloud/js/upload.js') }}"></script>
+            <script src="{{ asset('bundles/tabernicolajukecloud/js/info.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

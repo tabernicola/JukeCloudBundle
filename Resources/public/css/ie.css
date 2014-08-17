@@ -1,0 +1,5 @@
+.panel{height: 100%}
+.panel .well{ height: 92%}
+.panel-body{height:92%;}
+.ui-selected{filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e8eff7', endColorstr='#e8eff7');}
+#playlist .active a{filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#beebff', endColorstr='#a8e4ff');}

@@ -1,0 +1,46 @@
+Tabernicola\JukeCloudBundle\Entity\Artist:
+    type: entity
+    table: Artist
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        slug:
+            type: string
+            length: 255
+            gedmo:
+                slug:
+                    separator: "-"
+                    fields:
+                        - name
+        created:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+    oneToMany:
+        disks:
+            targetEntity: Disk
+            mappedBy: artist
+        songs:
+            targetEntity: Song
+            mappedBy: artist
+    lifecycleCallbacks: {  }
+    repositoryClass: Tabernicola\JukeCloudBundle\Entity\ArtistRepository

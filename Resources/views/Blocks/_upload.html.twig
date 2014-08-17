@@ -1,0 +1,109 @@
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% verbatim %}   
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td><span class="preview"></span></td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td><p class="size">Processing...</p></td>
+        <td><input type="text" required="true" id="form-band-{%=file.name.replace(/ /g,'-').replace(/[^\w-]+/g,'')%}" name="artist" placeholder="Grupo"></input></td>
+        <td><input type="text" required="true" id="form-disk-{%=file.name.replace(/ /g,'-').replace(/[^\w-]+/g,'')%}" name="disk" placeholder="Disco"></input></td>
+        <td><input type="text" required="true" id="form-number-{%=file.name.replace(/ /g,'-').replace(/[^\w-]+/g,'')%}" name="number" placeholder="Nº" class="number"></input></td>
+        <td><input type="text" required="true" id="form-song-{%=file.name.replace(/ /g,'-').replace(/[^\w-]+/g,'')%}" name="title" placeholder="Canción"></input></td>
+        <td>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+            </div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+            <button class="btn btn-primary start" disabled>
+                <i class="glyphicon glyphicon-upload"></i>
+                <span>Start</span>
+            </button>
+            {% } %}
+            {% if (!i) { %}
+            <button class="btn btn-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>Cancel</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
+{% endverbatim %}
+</script>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="add-song-div">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Añade más canciones a la colección</h4>
+            </div>
+            <div class="modal-body">
+                <ul id="upload-menu" class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#upload" role="tab" data-toggle="tab">Sube canciones</a></li>
+                    <li><a href="#youtube" role="tab" data-toggle="tab">Youtube</a></li>
+                    <li><a href="#tutv" role="tab" data-toggle="tab">Tu.Tv</a></li>
+                </ul>
+                <div class="tab-content fileupload-buttonbar">
+                    <div class="tab-pane  active" id="upload">
+                        <form id="fileupload" action="/" method="POST" enctype="multipart/form-data">
+                            <!-- Redirect browsers with JavaScript disabled to the origin page -->
+                            <noscript><input type="hidden" name="redirect" value="/"></noscript>
+                            <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                            <div class="row fileupload-buttonbar">
+                                <div class="col-lg-7">
+                                    <!-- The fileinput-button span is used to style the file input field as button -->
+                                    <span class="btn btn-success fileinput-button">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        <span>Elige archivos</span>
+                                        <input type="file" name="files[]" multiple>
+                                    </span>
+                                    <button type="submit" class="btn btn-primary start">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span>Start All</span>
+                                    </button>
+                                    <!-- The global file processing state -->
+                                    <span class="fileupload-process"></span>
+                                </div>
+                                <!-- The global progress state -->
+                                <div class="col-lg-5 fileupload-progress fade">
+                                    <!-- The global progress bar -->
+                                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                                    </div>
+                                    <!-- The extended global progress state -->
+                                    <div class="progress-extended">&nbsp;</div>
+                                </div>
+                            </div>
+                            <!-- The table listing the files available for upload/download -->
+                            <div id="upload-table-content ui-widget">
+                                <table role="presentation" class="table table-striped"><tbody class="files">
+                                        <tr class="template-upload">
+                                            <td></td>
+                                            <td>Nombre de archivo</td>
+                                            <td>Tamaño</td>
+                                            <td>Grupo</td>
+                                            <td>Disco</td>
+                                            <td>Nº</td>
+                                            <td>Titulo</td>
+                                            <td>Progreso</td>
+                                            <td>Acciones</td>
+                                        </tr>
+                                    </tbody></table>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="youtube">YT</div>
+                    <div class="tab-pane" id="tutv">tu.tv</div>
+                </div>
+
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
