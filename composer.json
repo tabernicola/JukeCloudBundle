@@ -2,7 +2,7 @@
     "name": "tabernicola/jukecloud-bundle",
     "type": "symfony-bundle",
     "description": "Jukebox bundle for Symfony",
-    "keywords": ["jukebox", "jukecloud", "music player", "playlist"],
+    "keywords": ["jukebox", "jukecloud", "music", "player", "playlist", "library"],
     "license": "MIT",
     "authors": [
         {
