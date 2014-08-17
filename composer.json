@@ -13,9 +13,9 @@
     "require": {
         "php": ">=5.3.2",
         "symfony/framework-bundle": "~2.3",
-        "components/bootstrap": "3.1.1",
-        "components/font-awesome": "dev-master",
-        "components/jqueryui": "dev-master",
+        "components/bootstrap": "3.2.0",
+        "components/font-awesome": "4.1.0",
+        "components/jqueryui": "dev-master@dev",
         "components/jquery": "1.*",
         "components/jqueryui-theme-bootstrap": "dev-master",
         "components/jplayer": "dev-master",
