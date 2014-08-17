@@ -28,11 +28,6 @@
         "echonest/echonest": "dev-master@dev",
         "liip/imagine-bundle": "1.0.*@dev"
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.3-dev"
-        }
-    },
     "autoload": {
         "psr-0" : {
             "Tabernicola\\JukeCloudBundle" : ""
