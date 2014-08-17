@@ -29,6 +29,11 @@
         "liip/imagine-bundle": "dev-master"
     },
     "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.3-dev"
+        }
+    }
     "autoload": {
         "psr-0" : {
             "Tabernicola\\JukeCloudBundle" : ""
