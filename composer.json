@@ -1,9 +1,24 @@
 {
     "name": "tabernicola/jukecloud-bundle",
+    "type": "symfony-bundle",
+    "description": "Jukebox bundle for Symfony",
+    "keywords": ["jukebox", "jukecloud", "music player", "playlist"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tabernicola",
+            "homepage": "https://github.com/tabernicola/JukeCloudBundle"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "~2.3",
+    },
     "autoload": {
         "psr-0" : {
             "Tabernicola\\JukeCloudBundle" : ""
         }
-    }
+    },
+    "target-dir": "Tabernicola/JukeCloudBundle",
 }
 
