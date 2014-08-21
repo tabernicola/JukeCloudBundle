@@ -1,0 +1,11 @@
+#center-panel,#progress-bar,#duration-container{display:none}
+.panel{width:100%;padding: 0px;margin:0px;border:0px;
+    height: -moz-calc(100% - 210px);/* Firefox */
+    height: -webkit-calc(100% - 210px);/* WebKit */
+    height: -o-calc(100% - 210px);/* Opera */
+    height: calc(100% - 210px);/* Standard */
+}
+#right-panel{height:150px;bottom: 0px;top: auto }
+.well{padding:0px}
+#left-panel .panel-heading{display:none}
+#left-panel .panel-body {height: 100%}

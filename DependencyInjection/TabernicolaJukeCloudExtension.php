@@ -22,7 +22,8 @@ class TabernicolaJukeCloudExtension extends Extension implements PrependExtensio
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-
+        $container->setParameter('tabernicola_juke_cloud.plugins', $config['plugins']);
+        
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
