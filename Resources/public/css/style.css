@@ -98,7 +98,7 @@ body {
 
 #center-panel .well{padding-top: 0px}
 #center-panel .panel{position:initial;top:auto}
-#center-panel .panel-title{text-align: right;}
+#center-panel .panel-title{text-align: center;}
 #info-panel{height:110px;border-color: #ddd;margin:10;background-color: #e8eff7;border-radius: 10px}
 .browser-cover{float: left;padding-right: 10px}
 .browser-cover img{width:90px}
