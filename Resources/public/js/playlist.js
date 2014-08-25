@@ -66,6 +66,14 @@ var Playlist= function(selector){
         $('#disable-repeat').hide();
         $('#active-repeat').show();
     })
+    
+    $('#play-next').bind("click",function( event ) {
+        playlist.playNext();
+    })
+    
+    $('#play-prev').bind("click",function( event ) {
+        playlist.playPrev();
+    })
 }
 
 $.extend(Playlist.prototype,{
@@ -158,6 +166,23 @@ $.extend(Playlist.prototype,{
             }
             else{
                 this.playSong($('#'+current).next().attr('id'));
+            }
+        }
+        this.refreshPlaylist();
+    },
+    
+    playPrev: function(){
+        var current=this.activeElement;
+        if (!current) {
+            this.playSong($(this.selector).children().not('div[id^=temp]').first().attr('id'));
+        }
+        else{
+            var lastId=$(this.selector).children().not('div[id^=temp]').first().attr('id');
+            if (this.repeat && current==lastId){
+                this.playSong($(this.selector).children().not('div[id^=temp]').last().attr('id'));
+            }
+            else{
+                this.playSong($('#'+current).prev().attr('id'));
             }
         }
         this.refreshPlaylist();

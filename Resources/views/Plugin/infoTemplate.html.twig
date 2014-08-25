@@ -1,3 +1,14 @@
-{% for templates in template %}
-    {{ include(template)}}
+{% for plugin in plugins %}
+    <div class="browser-plugin-container panel">
+        <div class="panel-heading browser-plugin-header">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#browser-plugin-{{plugin.pluginId}}">
+                    {{plugin.pluginTitle}}
+                </a>
+            </h4>
+        </div>
+        <div id="browser-plugin-{{plugin.pluginId}}" class="panel-collapse collapse {% if loop.first %}in {% endif %} browser-plugin-body">
+            <div class="">{{ include(plugin.templateName,plugin.templateParameters) }}</div>
+        </div>
+    </div>
 {% endfor %}

@@ -3,20 +3,22 @@
         <div class="browser-cover"><img id="browser-info-cover" src="{{asset('bundles/tabernicolajukecloud/img/album_big.png')}}"/></div>
         <div class="browser-info">
             <p>   <span id="browser-info-song"> </span></p>
-            <p>Por:<span id="browser-info-disk"> </span></p>
-            <p>En: <span id="browser-info-artist"> </span></p>
+            <p>En:<span id="browser-info-disk"> </span></p>
+            <p>Por: <span id="browser-info-artist"> </span></p>
         </div>
-            <!--<div class="btn-toolbar" role="toolbar">
-                <div class="btn-group"></div>
-                <div class="input-group">
-                  <input type="text" class="form-control">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Busca videos!</button>
-                  </span>
-                </div>
-            </div>-->
-        </div>
+        <!--<div class="btn-toolbar" role="toolbar">
+            <div class="btn-group"></div>
+            <div class="input-group">
+              <input type="text" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Busca videos!</button>
+              </span>
+            </div>
+        </div>-->
+    </div>
     <div class="panel-body">
-        <div id="player" class="jp-jplayer"></div>
+        <div id="accordion">
+            {{ render(controller('TabernicolaJukeCloudBundle:Plugin:renderInfoPlugin' )) }}
+        </div>
     </div>
 </div>                

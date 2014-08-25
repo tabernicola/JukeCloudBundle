@@ -1,7 +1,9 @@
 parameters:
     tabernicola_juke_cloud.datadir: /datos/Music/
     tabernicola_juke_cloud.covers_dir: %tabernicola_juke_cloud.datadir%covers
+    tabernicola_juke_cloud.plugins.init_info.class: Tabernicola\JukeCloudBundle\Plugin\InitInfoPlugin
+    
 services:
-#    tabernicola_juke_cloud.example:
-#        class: %tabernicola_juke_cloud.example.class%
+    tabernicola_juke_cloud.plugins.init_info:
+        class: %tabernicola_juke_cloud.plugins.init_info.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

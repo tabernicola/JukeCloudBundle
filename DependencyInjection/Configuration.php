@@ -24,9 +24,9 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('plugins')
                     ->children()
-                        ->arrayNode('info')->end()
-                        ->arrayNode('playlist')->end()
-                        ->arrayNode('library')->end()
+                        ->arrayNode('info')->prototype('scalar')->end()->end()
+                        ->arrayNode('playlist')->prototype('scalar')->end()->end()
+                        ->arrayNode('library')->prototype('scalar')->end()->end()
                     ->end()
                 ->end() // twitter
             ->end()

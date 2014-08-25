@@ -204,7 +204,12 @@ div.jp-audio div.jp-progress {
 	top:32px;
 	height:15px;
 }
-div.jp-audio div.jp-type-single div.jp-progress {width: 75%;left: 150px;}
+#progress-bar, div.jp-audio div.jp-type-single div.jp-progress {left: 200px;
+    width: -moz-calc(100% - 350px);/* Firefox */
+    width: -webkit-calc(100% - 350px);/* WebKit */
+    width: -o-calc(100% - 350px);/* Opera */
+    width: calc(100% - 350px);/* Standard */
+}
 div.jp-audio div.jp-type-playlist div.jp-progress {
 	left:166px;
 }

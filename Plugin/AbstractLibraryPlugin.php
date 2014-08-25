@@ -9,5 +9,4 @@ namespace Tabernicola\JukeCloudBundle\Plugin;
  */
 abstract class AbstractLibraryPlugin implements PluginInterface{
     
-    function getTemplateName();
 }

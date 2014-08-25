@@ -19,4 +19,19 @@ interface PluginInterface {
      * @return string[] array of strings
      */
     function getJavascriptFiles();
+    
+    /**
+     * Get the plugin Id
+     * 
+     * @return string[] array of strings
+     */
+    function getPluginId();
+    
+    /**
+     * Get the plugin Title
+     * 
+     * @return string[] array of strings
+     */
+    function getPluginTitle();
+    
 }

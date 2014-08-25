@@ -69,7 +69,7 @@ body {
 #add-song{position: absolute; top:0px; right:-2px}
 
 #player{
-    background: url('/bundles/tabernicolajukecloud/img/background.png') no-repeat 0px 0px   ;
+    //background: url('/bundles/tabernicolajukecloud/img/background.png') no-repeat 0px 0px   ;
     -webkit-background-size: cover; /* For WebKit*/
     -moz-background-size: cover;    /* Mozilla*/
     -o-background-size: cover;      /* Opera*/
@@ -97,8 +97,14 @@ body {
 #disable-shuffle, #disable-repeat{display:none}
 
 #center-panel .well{padding-top: 0px}
-#info-panel{height:100px}
+#center-panel .panel{position:initial;top:auto}
+#center-panel .panel-title{text-align: right;}
+#info-panel{height:110px;border-color: #ddd;margin:10;background-color: #e8eff7;border-radius: 10px}
 .browser-cover{float: left;padding-right: 10px}
 .browser-cover img{width:90px}
 .browser-info p{font-size: 12px;margin-bottom: 0px }
 .browser-info span{font-size: 20px;padding-left: 10px}
+
+.browser-plugin-container{margin-left: 10;margin-right: 10;margin-bottom:5;}
+.browser-plugin-header{background-color: #e8eff7;border-color: #ddd;color: #333;border-top-left-radius: 8px;border-top-right-radius: 8px;}
+.browser-plugin-body{padding: 15px;background-color: #ffffff;border-bottom-right-radius: 8px;border-bottom-left-radius : 8px;}

@@ -3,7 +3,7 @@ var thePlayer=$("#player").jPlayer({
             thePlaylist.playNext();
         },
         error: function () {
-            //thePlaylist.playNext();
+            thePlaylist.playNext();
         },
         cssSelectorAncestor: "#controls",
         cssSelector: {
