@@ -2,9 +2,9 @@
 <script src="{{ asset(components_folder ~ 'jquery/jquery.min.js') }}"></script>
 <script src="{{ asset(components_folder ~ 'bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset(components_folder ~ 'jquery-ui/jquery-ui.min.js') }}"></script>
-<script src="{{ asset(components_folder ~ 'jquery-ui/ui/jquery.ui.slider.js') }}"></script>
+<script src="{{ asset(components_folder ~ 'jquery-ui/ui/minified/slider.min.js') }}"></script>
 <script src="{{ asset('bundles/tabernicolajukecloud/js/id3v2.js') }}"></script>
-<script src="{{ asset(components_folder ~ 'jplayer/jquery.jplayer/jquery.jplayer.js') }}"></script>
+<script src="{{ asset('bundles/tabernicolajukecloud/js/playerManager.js') }}"></script>
 <script src="jstree/jstree.js"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->
 <script src="{{ asset('bundles/tabernicolajukecloud/js/template.js')}}"></script>
@@ -22,10 +22,13 @@
 <script src="/blueimp-fileupload/js/jquery.fileupload-validate.js"></script>
 <!-- The File Upload user interface plugin -->
 <script src="/blueimp-fileupload/js/jquery.fileupload-ui.js"></script>
-<script src="{{ asset('bundles/tabernicolajukecloud/js/init.js') }}"></script>
 <script src="{{ asset('bundles/tabernicolajukecloud/js/playlist.js') }}"></script>
 <script src="{{ asset('bundles/tabernicolajukecloud/js/library.js') }}"></script>
 <script src="{{ asset('bundles/tabernicolajukecloud/js/upload.js') }}"></script>
 <script src="{{ asset('bundles/tabernicolajukecloud/js/info.js') }}"></script>
+<script src="{{ asset(components_folder ~ 'jplayer/jquery.jplayer/jquery.jplayer.js') }}"></script>
+<script src="{{ asset('bundles/tabernicolajukecloud/js/player/jc.jplayer.js') }}"></script>
+
+
 {{ render(controller('TabernicolaJukeCloudBundle:Plugin:javascript')) }}
 

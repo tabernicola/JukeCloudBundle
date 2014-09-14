@@ -23,7 +23,6 @@
             </p>
 
             <p class="h6">
-                Al añadir canciones a la lista, estas comenzarán a reproducirse automáticamente. 
                 Puedes arrastrar las canciones dentro de la propia lista para ordenarlas a tu antojo,
                 hacer doble click para saltar automáticamente a esa canción,
                 o seleccionarlas con un click, y pulsar la tecla "Supr" para eliminarlas de la lista
@@ -35,31 +34,97 @@
         </div>
         <div id="jc-info-library" class="collapse">
             <h5><u>Librería</u></h5>
-            TODO
-            <p class="h6">
-                Volver al <a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-index">indice de la ayuda</a>
-            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <img class="well pull-right img-responsive" src="{{ asset('bundles/tabernicolajukecloud/img/info/library.png')}}"/>
+                    <p class="h6">
+                        La música disponible se encuentra organizada dentro de la librería en tres niveles, autor o grupo, disco y canciones. 
+                        Pulsando en la flechita a la izquierda del elemento, podrás hacer que se despliegue para ver el contenido. 
+                        Es decir, si pinchas en la flechita de un grupo, se desplegarán los discos de ese grupo, y si lo haces en la de un disco, las canciones.
+                        Cualquiera de estos elementos pueden ser arrastrados a la lista de reproducción, y además, sólamente para las canciones, también puedes hacer doble click para conseguir el mismo efecto
+                    </p>
+                    <p class="h6">
+                        También, en la parte superior de la columna, tenemos una caja de texto para filtrar la música y mostrar sólo la que nos interese. 
+                        Simplemente escribe el nombre de la canción, disco o grupo que desees, y automáticamente se filtrlá el contenido
+                    </p>
+                    <p class="h6">
+                        Por último, al lado de la caja de texto, tenemos un icono <img src="/bundles/tabernicolajukecloud/img/plus.png"> en el que podemos pinchar si queremos aportar más musica al sistema.
+                        Si lo haces, aparecerá un formulario de subida muy simple en el podrás seleccionar el archivo de tu disco duro, e introducir los datos del mismo para añadirlo a la librería
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center"></div>
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-index">Volver al Indice</a></div>
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-info">Panel central &raquo;</a></div>
+            </div>
         </div>
         <div id="jc-info-info" class="collapse">
             <h5><u>Panel central</u></h5>
-            TODO
-            <p class="h6">
-                Volver al <a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-index">indice de la ayuda</a>
-            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <img class="well pull-right img-responsive " src="{{ asset('bundles/tabernicolajukecloud/img/info/browser.png')}}"/>
+                    <p class="h6">
+                        El panel central se divide en dos zonas. En la superior, la cabecera, se mostrará la información relativa a la  canción que se este reproduciendo.
+                        El resto del panel se usará para mostrar distintos módulos, como este de información. Todos los módulos, se podrán mostrar/ocultar pulsando sobre su título.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-library">&laquo; Librería</a></div>
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-index">Volver al Indice</a></div>
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-playlist">Lista de reproducción &raquo;</a></div>
+            </div>
         </div>
         <div id="jc-info-playlist" class="collapse">
             <h5><u>Lista de reproducción</u></h5>
-            TODO
-            <p class="h6">
-                Volver al <a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-index">indice de la ayuda</a>
-            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <img class="well pull-right img-responsive " src="{{ asset('bundles/tabernicolajukecloud/img/info/playlist.png')}}"/>
+                    <p class="h6">
+                        La lista de reproducción contiene las canciones a reproducir que han sido añadidas desde la librería. Sobre estás canciones puedes realizar varias acciones
+                        <ul >
+                            <li class="h6">Reproducir directamente la canción deseada haciendo doble click sobre ella</li>
+                            <li class="h6">Ordenarlas arrastrandolas con el ratón</li>
+                            <li class="h6">Eliminarlas de la lista, seleccionando con el ratón una o más (manteniendo pulsada la tecla <code>Ctrl</code>), y pulsando la tecla <code>Supr</code> cuando hayas acabado con la selección</li>
+                        </ul>
+                    </p>
+                    <p class="h6">
+                        Además, en la parte superior tienes dos iconos con los que podrás activar el modo de repetición y el de lista dinámica aleatoria
+                        <ul >
+                            <li class="h6">t
+                                <img src="/bundles/tabernicolajukecloud/img/repeat.png" title="Activar modo repetición">
+                                Modo de reptición: con esta opción activada,  cuando se llegue a la última canción, continuará la reproducción con la primera de la lista
+                            </li>
+                            <li class="h6">
+                                <img src="/bundles/tabernicolajukecloud/img/shuffle.png" title="Activar modo dinámico">
+                                Lista dinámica aleatoria: al activar la lista dinámica, el sistema se encargará automáticamente de eliminar las canciones ya reproducidas, y de añadir nuevas para que nunca se acabe la reproducción. La forma de seleccionar las canciones a añadir es totalmente aleatoria
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-info">&laquo; Panel central</a></div>
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-index">Volver al Indice</a></div>
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-contact">Errores y sugerencias &raquo;</a></div>
+            </div>
         </div>
         <div id="jc-info-contact" class="collapse">
             <h5><u>Errores y sugerencias</u></h5>
-            TODO
-            <p class="h6">
-                Volver al <a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-index">indice de la ayuda</a>
-            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="h6">
+                        Para cualquier duda, error o sugerencia. seguro que me conoces, así que me lo dices directamente.
+                        Si no es el caso, puedes crear una issue en <a href="https://github.com/tabernicola/JukeCloudBundle/issues/new">el repositorio del proyecto</a> (necesita registro)
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-playlist">&laquo; Lista de reproducción</a></div>
+                <div class="col-md-4 text-center"><a data-parent="#jc-info-content" data-toggle="collapse" href="#jc-info-index">Volver al Indice</a></div>
+                <div class="col-md-4 text-center"></div>
+            </div>
         </div>
     </div>
 </div>    

@@ -1,18 +1,19 @@
 var thePlaylist= new Playlist('#playlist');
+var dataUrlFunction=function(node){
+    switch (node.type) {
+        case 'root':
+            return '/ajax/' + node.id +'/' ;
+        case 'artist':
+            return '/ajax/' + node.id +'/';
+        case 'disk':
+            return '/ajax/' + node.id +'/';
+        default:
+            return '/ajax/types/'
+    }
+}
 var defaultData={
-    'url': function(node) {
-        switch (node.type) {
-            case 'root':
-                return '/ajax/' + node.id +'/' ;
-            case 'artist':
-                return '/ajax/' + node.id +'/';
-            case 'disk':
-                return '/ajax/' + node.id +'/';
-            default:
-                return '/ajax/types/'
-        }
-    },
-    "data": function(node) {
+    'url': dataUrlFunction,
+    'data': function() {
         return null
     }
 }
@@ -39,16 +40,22 @@ $(document).ready(function(){
     });
     
     function filterLibrary(search){
+        if(search.length==0 || search.length>2){
             $.ajax({
                 url: '/library/filter/'+encodeURIComponent(search),
                 dataType: "json"
             }).done(function(data){
-                $('#library').jstree(true).settings.core.data =data;
+                $('#library').jstree(true).settings.core.data = function (node, cb) {
+                    if(node.id == "#") { cb(data); }
+                    else {
+                        $.get(dataUrlFunction(node)).done(function(d) { cb(d); });
+                    }
+                }
                 $("#library").jstree(true).refresh();
             });
-        
-        
+        }
     }
+    
     $('#clear-library-filter').click(function(){
         $('#library-filter').val('');
         $("#library").jstree("close_all");
@@ -58,8 +65,10 @@ $(document).ready(function(){
     
     var to = false;
     $('#library-filter').keyup(function () {
-        if(to) { clearTimeout(to); }
-        to = setTimeout(function () {filterLibrary($('#library-filter').val());}, 250);
+        if(to) { 
+            clearTimeout(to); 
+        }
+        to = setTimeout(function () {filterLibrary($('#library-filter').val());}, 500);
     });
     
     $(document).on('dblclick','li[id^="song"] > a',function (e) {

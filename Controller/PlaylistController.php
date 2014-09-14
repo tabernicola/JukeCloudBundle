@@ -53,6 +53,7 @@ class PlaylistController extends Controller
             $node->id= 'song-'.$song->getId();
             $node->songTitle= $song->getTitle();
             $node->diskTitle= $song->getDisk()->getTitle();
+            $node->type=$song->getType();
             if ($song->getDisk()->getCover()){
                 // string to put directly in the "src" of the tag <img>
                 $srcPath = $cacheManager->getBrowserPath($song->getDisk()->getCover(), 'plcover');

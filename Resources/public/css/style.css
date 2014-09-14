@@ -100,7 +100,7 @@ body {
 #center-panel .panel{position:initial;top:auto}
 #center-panel .panel-title{text-align: center;}
 #info-panel{height:110px;border-color: #ddd;margin:10;background-color: #e8eff7;border-radius: 10px}
-.browser-cover{float: left;padding-right: 10px}
+.browser-cover,#browser-video{float: left;padding-right: 10px}
 .browser-cover img{width:90px}
 .browser-info p{font-size: 12px;margin-bottom: 0px }
 .browser-info span{font-size: 20px;padding-left: 10px}

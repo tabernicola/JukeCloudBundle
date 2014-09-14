@@ -5,6 +5,7 @@ var Playlist= function(selector){
     this.shuffle=false;
     this.repeat=false;
     this.numElements=0;
+    this.status='';
     
     $(this.selector).sortable();
     $(this.selector).selectable();
@@ -32,7 +33,7 @@ var Playlist= function(selector){
                 playlist.removeSong($(elem).parent().attr('id'));
             });
         }
-    } );
+    } ); 
     
     $(this.selector).dblclick(function( event ) {
         var t=$(event.target).closest('.droppable-element');
@@ -115,7 +116,7 @@ $.extend(Playlist.prototype,{
     addSong: function(data, where){
         var newId='jc-pe-'+(this.nextId++);
         var elemHtml=
-        '<div id="'+newId+'" class="list-group droppable-element" data-element="'+data.id+'">\n\
+        '<div id="'+newId+'" class="list-group droppable-element" data-type="'+data.type+'" data-element="'+data.id+'">\n\
             <a href="#" class="list-group-item">\n\
                 <div class="album-cover"><img src="'+data.icon+'"/></div>\n\
                 <p class="list-group-item-text ">'+data.songTitle+'</p>\n\
@@ -138,9 +139,12 @@ $.extend(Playlist.prototype,{
         t=$('#'+id);
         if (t){
             try{
-                $("#player").jPlayer("setMedia",{
-                    mp3: "/"+t.data().element
-                }).jPlayer("play");
+                var type=t.data().type;
+                
+                this.player=playerManager.initPlayer(type);
+                playerManager.sendMessageToPlayer(type, "setMedia",{mp3: "/"+t.data().element});
+                playerManager.sendMessageToPlayer(type, 'play');
+
                 if (this.activeElement){
                     $('#'+this.activeElement).removeClass('active')
                 }
@@ -149,6 +153,7 @@ $.extend(Playlist.prototype,{
                 t.trigger('jc.playlist.play-song');
             }
             catch(e){
+                console.log(e);
                 $(document).trigger('jc.playlist.error.play-song');
             }
         }

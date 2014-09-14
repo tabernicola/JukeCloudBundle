@@ -625,3 +625,4 @@ a.jp-shuffle-off:hover {
 #top-bar{width:100%;border:none; padding-left:1px !important;padding-right:1px !important}
 div.jp-audio div.jp-type-single div.jp-interface {height: 65px;}
 div.jp-duration {float: none;margin-right: 500px;}
+#unmute{display:none}

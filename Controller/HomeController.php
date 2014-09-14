@@ -126,6 +126,7 @@ class HomeController extends Controller
         foreach ($artists as $artist) {
             $childrens[$artist->getId()]=$artist->toObject();
             $childrens[$artist->getId()]->state=$closeState;
+            $childrens[$artist->getId()]->children=true;
         }
         
         //disks
@@ -135,9 +136,14 @@ class HomeController extends Controller
             if (!isset($childrens[$artist->getId()])){
                 $childrens[$artist->getId()]=$artist->toObject();
                 $childrens[$artist->getId()]->state=$openState;
+                $childrens[$artist->getId()]->children=array();
             }
-            $childrens[$artist->getId()]->children[$disk->getId()]=$disk->toObject();
-            $childrens[$artist->getId()]->children[$disk->getId()]->state=$closeState;
+            
+            if (is_array($childrens[$artist->getId()]->children)){
+                $childrens[$artist->getId()]->children[$disk->getId()]=$disk->toObject();
+                $childrens[$artist->getId()]->children[$disk->getId()]->state=$closeState;
+                $childrens[$artist->getId()]->children[$disk->getId()]->children=true;
+            }
         }
         
         //songs
@@ -148,30 +154,35 @@ class HomeController extends Controller
             if (!isset($childrens[$artist->getId()])){
                 $childrens[$artist->getId()]=$artist->toObject();
                 $childrens[$artist->getId()]->state=$openState;
+                $childrens[$artist->getId()]->children=array();
             }
-            if (!isset($childrens[$artist->getId()]->children[$disk->getId()])){
+            if (is_array($childrens[$artist->getId()]->children) &&
+                !isset($childrens[$artist->getId()]->children[$disk->getId()])){
                 $childrens[$artist->getId()]->children[$disk->getId()]=$disk->toObject();
                 $childrens[$artist->getId()]->children[$disk->getId()]->state=$openState;
+                $childrens[$artist->getId()]->children[$disk->getId()]->children=array();
             }
-            $childrens[$artist->getId()]->children[$disk->getId()]->children[]=$song->toObject();
+            if (is_array($childrens[$artist->getId()]->children) &&
+                is_array($childrens[$artist->getId()]->children[$disk->getId()]->children)){
+                $childrens[$artist->getId()]->children[$disk->getId()]->children[]=$song->toObject();
+            }
         }
         
         //convert hash array to index array
         $childrens=  array_values($childrens);
         $childrensCount=  count($childrens);
         for ($i= 0; $i < $childrensCount; $i++) {
-            if (count($childrens[$i]->children)){
+            if (is_array($childrens[$i]->children)){
                 $childrens[$i]->children=  array_values($childrens[$i]->children);
                 $achildrensCount=  count($childrens[$i]->children);
                 for ($j= 0; $j < $achildrensCount; $j++) {
-                    if (count($childrens[$i]->children[$j]->children)){
+                    if (is_array($childrens[$i]->children[$j]->children)){
                         $childrens[$i]->children[$j]->children=  array_values($childrens[$i]->children[$j]->children);
                     }
                 }
             }
         }
         $root->children=$childrens;
-
         $response = new JsonResponse();
         return $response->setData(array($root));
     }
