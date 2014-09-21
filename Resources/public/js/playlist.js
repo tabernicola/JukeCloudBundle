@@ -140,9 +140,8 @@ $.extend(Playlist.prototype,{
         if (t){
             try{
                 var type=t.data().type;
-                
                 this.player=playerManager.initPlayer(type);
-                playerManager.sendMessageToPlayer(type, "setMedia",{mp3: "/"+t.data().element});
+                playerManager.sendMessageToPlayer(type, "setSong",t.data().element);
                 playerManager.sendMessageToPlayer(type, 'play');
 
                 if (this.activeElement){

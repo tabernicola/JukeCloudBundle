@@ -1,4 +1,5 @@
 {% for plugin in plugins %}
+    {% if plugin.templateName %}
     <div class="browser-plugin-container panel">
         <div class="panel-heading browser-plugin-header">
             <h4 class="panel-title">
@@ -11,4 +12,5 @@
             <div class="">{{ include(plugin.templateName,plugin.templateParameters) }}</div>
         </div>
     </div>
+    {% endif %}
 {% endfor %}

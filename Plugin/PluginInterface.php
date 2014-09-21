@@ -34,4 +34,7 @@ interface PluginInterface {
      */
     function getPluginTitle();
     
+    function getTemplateName();
+    
+    function getTemplateParameters();
 }

@@ -1,8 +1,8 @@
 (function ($) {
     // static function, making them public
-    $.extend($.jPlayer, {
-        getStatus: function () { return $.fn.jPlayer.data('jPlayer').status.media;},
-        setSong:function (song){ console.log(song);return $.fn.jPlayer("setMedia",{mp3: "/"+song });},
+    $.extend(true, $.jPlayer.prototype, {
+        getStatus: function () { return this.data('jPlayer').status.media;},
+        setSong:function (song){ console.log(song);return this.setMedia({mp3: "/"+song });},
         canPlay: function (type){ return (type == 'local')? true: false;}
     });
 })(jQuery);

@@ -51,12 +51,12 @@ class PluginController extends Controller
             $service=$this->get($plugin);
             $files=array_merge($files,$service->getCssFiles());
         }
-        return $this->render('TabernicolaJukeCloudBundle:Plugin:js.html.twig',array('files'=>$files));
+        return $this->render('TabernicolaJukeCloudBundle:Plugin:css.html.twig',array('files'=>$files));
     }
     
-    public function renderInfoPluginAction()
+    public function renderPluginBrowserAction()
     {
-        $plugins = $this->getPlugins(array('info'));
+        $plugins = $this->getPlugins(array('playlist','info'));
         $services=array();
         foreach($plugins as $plugin){
             $services[]=$this->get($plugin);

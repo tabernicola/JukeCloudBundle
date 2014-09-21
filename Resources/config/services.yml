@@ -2,8 +2,16 @@ parameters:
     tabernicola_juke_cloud.datadir: /datos/Music/
     tabernicola_juke_cloud.covers_dir: %tabernicola_juke_cloud.datadir%covers
     tabernicola_juke_cloud.plugins.init_info.class: Tabernicola\JukeCloudBundle\Plugin\InitInfoPlugin
+    tabernicola_juke_cloud.plugins.local.class: Tabernicola\JukeCloudBundle\Plugin\LocalPlugin
+    tabernicola_juke_cloud.plugins.youtube.class: Tabernicola\JukeCloudBundle\Plugin\YoutubePlugin
     
 services:
     tabernicola_juke_cloud.plugins.init_info:
         class: %tabernicola_juke_cloud.plugins.init_info.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    tabernicola_juke_cloud.plugins.local:
+        class: %tabernicola_juke_cloud.plugins.local.class%
+        arguments: [%components-folder%]
+        
+    tabernicola_juke_cloud.plugins.youtube:
+        class: %tabernicola_juke_cloud.plugins.youtube.class%

@@ -8,11 +8,7 @@ namespace Tabernicola\JukeCloudBundle\Plugin;
  * @author Tabernicola
  */
 abstract class AbstractInfoPlugin implements PluginInterface{
-    
-    abstract function getTemplateName();
-    
     function getTemplateParameters(){
         return array();
     }
-    
 }

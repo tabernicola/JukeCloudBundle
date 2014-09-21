@@ -3,8 +3,10 @@
 namespace Tabernicola\JukeCloudBundle\Plugin;
 
 use Tabernicola\JukeCloudBundle\Plugin\AbstractPlaylistPlugin;
+use Tabernicola\JukeCloudBundle\Entity\Song;
+use Symfony\Component\HttpFoundation\Response;
 
-class InitInfoPlugin extends AbstractPlaylistPlugin {
+class YoutubePlugin extends AbstractPlaylistPlugin {
     
     public function getCssFiles() {
         return array();
@@ -12,7 +14,8 @@ class InitInfoPlugin extends AbstractPlaylistPlugin {
 
     public function getJavascriptFiles() {
         return array(
-            "'bundles/tabernicolajukecloud/js/jc.youtube.js'"
+            'https://www.youtube.com/iframe_api',
+            "bundles/tabernicolajukecloud/js/player/jc.youtube.js"
         );
     }
 
@@ -25,7 +28,11 @@ class InitInfoPlugin extends AbstractPlaylistPlugin {
     }
 
     function getTemplateName(){
-        return "TabernicolaJukeCloudBundle:Plugin/Templates:init-info.html.twig";
+        return "TabernicolaJukeCloudBundle:Plugin/Templates:youtube.html.twig";
+    }
+    
+    function getContent(Song $song) {
+        return  new Response($song->getPath());
     }
     
 }
