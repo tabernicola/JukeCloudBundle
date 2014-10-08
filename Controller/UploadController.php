@@ -99,7 +99,4 @@ class UploadController extends Controller
         $response = new JsonResponse();
         return $response->setData($data);
     }
-    
-    
-
 }

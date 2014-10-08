@@ -30,6 +30,19 @@ class PluginController extends Controller
         return $response;
     }
     
+    private function getPluginByServiceSufix($serviceSufix){
+        $plugins=$this->getPlugins();
+            
+        foreach($plugins as $serviceName){
+            //Avoid the notice in the end function with the @
+            if (@end(explode('.', $serviceName))===$serviceSufix){
+                return $this->get($serviceName);
+            }
+        }
+        return false;
+        
+    }
+    
     public function javascriptAction()
     {
         $plugins = $this->getPlugins();
@@ -56,11 +69,35 @@ class PluginController extends Controller
     
     public function renderPluginBrowserAction()
     {
-        $plugins = $this->getPlugins(array('playlist','info'));
+        $plugins = $this->getPlugins(array('info'));
         $services=array();
         foreach($plugins as $plugin){
             $services[]=$this->get($plugin);
         }
         return $this->render('TabernicolaJukeCloudBundle:Plugin:infoTemplate.html.twig',array('plugins'=>$services));
+    }
+    
+    public function renderPluginPlaylistAction()
+    {
+        $plugins = $this->getPlugins(array('playlist'));
+        $services=array();
+        foreach($plugins as $plugin){
+            $services[]=$this->get($plugin);
+        }
+        return $this->render('TabernicolaJukeCloudBundle:Plugin:playlistTemplate.html.twig',array('plugins'=>$services));
+    }
+    
+    public function methodAction($serviceSufix, $method){
+        if (!$plugin = $this->getPluginByServiceSufix($serviceSufix)){
+            throw new Exception("Plugin not found");
+        }
+        
+        if (!method_exists($plugin, $method)){
+            throw new Exception("Method $method doesn't exist in ".  get_class($plugin));
+        }
+        
+        
+        return $plugin->$method($this->getRequest());
+        
     }
 }

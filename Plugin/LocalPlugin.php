@@ -28,7 +28,7 @@ class LocalPlugin extends AbstractPlaylistPlugin {
     }
 
     public function getPluginTitle() {
-        return "Local";
+        return "Sube Canciones";
     }
 
     public function getPluginId() {
@@ -36,7 +36,7 @@ class LocalPlugin extends AbstractPlaylistPlugin {
     }
 
     function getTemplateName(){
-        return null;
+        return "TabernicolaJukeCloudBundle:Plugin/Templates:local.html.twig";
     }
     
     function getContent(Song $song) {

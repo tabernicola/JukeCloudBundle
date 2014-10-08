@@ -44,8 +44,9 @@
             </div>
         </div>
 
+        {{ include('TabernicolaJukeCloudBundle:Blocks:_upload.html.twig')}}
+        
         {% block javascript %}
-            {{ include('TabernicolaJukeCloudBundle:Blocks:_upload.html.twig')}}
             {{ include('TabernicolaJukeCloudBundle:Blocks:_js.html.twig')}}
         {% endblock %}
     </body>

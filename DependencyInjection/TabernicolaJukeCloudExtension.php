@@ -24,6 +24,13 @@ class TabernicolaJukeCloudExtension extends Extension implements PrependExtensio
         $config = $this->processConfiguration($configuration, $configs);
         $container->setParameter('tabernicola_juke_cloud.plugins', $config['plugins']);
         
+        //YOUTUBE PLUGIN
+        $ytApiKey=null;
+        if (isset($config['youtube_plugin']['apikey'])){
+            $ytApiKey=$config['youtube_plugin']['apikey'];
+        }
+        $container->setParameter('tabernicola_juke_cloud.youtube_plugin.apikey', $ytApiKey);
+        
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

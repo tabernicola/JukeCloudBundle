@@ -1,1 +1,43 @@
-<div id="jc-youtube-player" ></div>    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div id="ytMessage" class="alert alert-danger hide"></div>
+            <div class="input-group">
+                <input id="ytUrl" type="text" class="form-control" placeholder="Pega la dirección de youtube del video deseado (https://www.youtube.com/watch?v=MGL_3WDUrBY)">
+                <span class="input-group-addon"><a href="#" id="ytAdd">Añadir</a></span>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row hide" id="ytForm">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <div class="row"><img id="ytImg" src="https://i.ytimg.com/vi/_mrmnlxqIqg/default.jpg"/></div>
+                <div class="row"><span id="ytTitle"></span></div>
+                <div class="row"><span id="ytDesc"></span></div>
+            </div>
+            <div class="col-md-5 form-horizontal">
+                <div class="row form-group">
+                    <label class="col-sm-3control-label">Grupo: </label>
+                    <input id="ytBand" type="text"/>
+                </div>
+                <div class="row form-group">
+                    <label class="col-sm-3 control-label">Disco: </label>
+                    <input id="ytDisk" type="text"/></div>
+                <div class="row form-group">
+                    <label class="col-sm-3 control-label">Nº y titulo</label>
+                    <input id="ytSongNumber" type="text" width="20px"/>
+                    <input id="ytSongTitle" type="text"/>
+                </div>
+                <div class="row form-group text-center">
+                    <input id="ytSave" type="button" class="btn btn-default" value="Guardar"/>
+                </div>    
+                <input type="hidden" id="youtubeId"/>
+            </div>
+            
+           <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>

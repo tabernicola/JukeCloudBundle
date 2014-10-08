@@ -29,6 +29,11 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('library')->prototype('scalar')->end()->end()
                     ->end()
                 ->end() // twitter
+                ->arrayNode('youtube_plugin')
+                    ->children()
+                        ->scalarNode('apikey')->defaultNull()->end()
+                    ->end()
+                ->end() // twitter
             ->end()
         ;
 

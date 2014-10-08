@@ -1,3 +1,16 @@
-{% for template in templates %}
-    {{ include(template)}}
-{% endfor %}
+<ul id="upload-menu" class="nav nav-tabs" role="tablist">
+    {% for plugin in plugins %}
+        {% if plugin.templateName %}
+        <li {%if loop.first %}class="active"{% endif %}><a href="#{{plugin.pluginId}}" role="tab" data-toggle="tab">{{plugin.pluginTitle}}</a></li>
+        {% endif %}
+    {% endfor %}
+</ul>
+<div class="tab-content">
+    {% for plugin in plugins %}
+        {% if plugin.templateName %}
+        <div class="tab-pane  {%if loop.first %}active{% endif %}" id="{{plugin.pluginId}}">
+            <div class="">{{ include(plugin.templateName,plugin.templateParameters) }}</div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>

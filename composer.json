@@ -24,7 +24,7 @@
         "stof/doctrine-extensions-bundle": "1.1.*",
         "nass600/get-id3": "*",
         "nass600/Lyrics-bundle": "*",
-        "ricbra/discogs-bundle": "~1.0.0",
+        "dandelionmood/lastfm": "dev-master",
         "echonest/echonest": "*",
         "liip/imagine-bundle": "1.0.*"
     },
