@@ -22,6 +22,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('lastfm_apikey')->defaultNull()->end()
+                ->scalarNode('lastfm_secret')->defaultNull()->end()
+                ->scalarNode('apikey')->defaultNull()->end()
                 ->arrayNode('plugins')
                     ->children()
                         ->arrayNode('info')->prototype('scalar')->end()->end()
