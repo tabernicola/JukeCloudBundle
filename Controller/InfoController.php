@@ -49,7 +49,7 @@ class InfoController extends Controller
     }
     
     private function getDiskCover($artist, $disk){
-        $discogs = $this->container->get('discogs');
+        /*$discogs = $this->container->get('discogs');
         $response=$discogs->search(
             array('q'=>$artist->getName().' - '.$disk->getTitle())
         )->getPath('results');
@@ -62,16 +62,17 @@ class InfoController extends Controller
             $resul=$response[0];
             $thumb=str_replace("api.discogs.com","s.pixogs.com",$resul['thumb']);
             //$thumb=str_replace("R-90-","R-150-",$thumb);
+            print_r($resul);
             $fs->copy($thumb,$root.$path);
             //$genres=  array_merge($resul['style'], $resul['genre']);
-            $disk->setCover($path);
-            $em->persist($disk);
-            $em->flush();
-            return $path;
-        }
-        else{
-            return false;
-        }
+            if (file_exists($root.$path) && filesize($root.$path)>1024){
+                $disk->setCover($path);
+                $em->persist($disk);
+                $em->flush();
+                return $path;
+            }
+        }*/
+
+        return false;
     }
-   
 }
