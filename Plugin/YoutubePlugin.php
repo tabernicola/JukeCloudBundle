@@ -8,11 +8,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Madcoda\Youtube;
+use Tabernicola\JukeCloudBundle\Form\YoutubeSongType;
+use Symfony\Component\DependencyInjection\Container;
 
 class YoutubePlugin extends AbstractPlaylistPlugin {
     private $apiKey;
+    private $container;
     
-    function __construct($apiKey) {
+    function __construct(Container $container, $apiKey) {
+        $this->container=$container;
         if (!$apiKey){
             throw new Exception("You must set tabernicola_juke_cloud.youtube_plugin.apikey configuration key if you want to use the youtube plugin ");
         }
@@ -42,7 +46,7 @@ class YoutubePlugin extends AbstractPlaylistPlugin {
     }
 
     function getTemplateName(){
-        return "TabernicolaJukeCloudBundle:Plugin/Templates:youtube.html.twig";
+        return "TabernicolaJukeCloudBundle:Plugin/Templates/youtube:youtube.html.twig";
     }
     
     function getContent(Song $song) {
@@ -56,16 +60,63 @@ class YoutubePlugin extends AbstractPlaylistPlugin {
 
             // Parse Youtube URL into videoId
             $videoId = $youtube->parseVIdFromURL($url);
+            $em = $this->container->get('doctrine')->getManager();
+            $repo=$em->getRepository('TabernicolaJukeCloudBundle:Song');
+            if($song=$repo->findOneBy(array('path'=>$videoId,'type'=>$this->getPluginId()))){
+                $html=$this->container->get('templating')->render(
+                    "TabernicolaJukeCloudBundle:Plugin/Templates/youtube:error.video-exist.html.twig",
+                    array('id'=>$videoId,'song'=>$song)
+                );
+                return new JsonResponse(array('error'=>$html));
+            }
             // Return a std PHP object 
             $video = $youtube->getVideoInfo($videoId);
             return new JsonResponse($video);
             
         } catch (\Exception $e) {
-            return new JsonResponse(json_encode(array(
-                'error'=>$e->getMessage() 
-            )));
+            return new JsonResponse(array('error'=>$e->getMessage()));
         }
-        
-        
+    }
+    
+    function add(Request $request){
+        if ($request->getMethod() == 'POST') {
+            $song=new Song();
+            $obj=new \stdClass();
+            $em = $this->container->get('doctrine')->getManager();
+            $form = $this->container->get('form.factory')->create(new YoutubeSongType, $song, array('em'=>$em));
+            $form->handleRequest($request);
+            $validator = $this->container->get('validator');
+            $errorList = $validator->validate($song);
+            if (!count($errorList)) {
+                $path=$request->request->get('ytId');
+                $song->setPath($path);
+                $song->setType($this->getPluginId());
+                if (!$song->getDisk()->getArtist()){
+                    $song->getDisk()->setArtist($song->getArtist());
+                }
+                $em->persist($song);
+                $em->flush();
+                $obj->url='song-'.$song->getId();
+                $obj->name=$song->getTitle();
+                $html=$this->container->get('templating')->render(
+                    "TabernicolaJukeCloudBundle:Plugin/Templates/youtube:succes.html.twig",
+                    array('song'=>$song)
+                );
+                return new JsonResponse(array('msg'=>$html));
+            } else{
+                $msg="";
+                foreach ($errorList as $err) {
+                    $msg.= $err->getMessage() . "\n";
+                }
+                $html=$this->container->get('templating')->render(
+                    "TabernicolaJukeCloudBundle:Plugin/Templates/youtube:error.html.twig",
+                    array('msg'=>$msg)
+                );
+                return new JsonResponse(array('error'=>$html));
+            }
+        }
+        else{
+            return new JsonResponse();
+        }
     }
 }

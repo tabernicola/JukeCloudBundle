@@ -2,7 +2,10 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <div id="ytMessage" class="alert alert-danger hide"></div>
+            <div id="ytMessage" class="alert alert-danger hide">
+                <a href="#" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></a>
+                <p id="ytMessageText"></p>
+            </div>
             <div class="input-group">
                 <input id="ytUrl" type="text" class="form-control" placeholder="Pega la dirección de youtube del video deseado (https://www.youtube.com/watch?v=MGL_3WDUrBY)">
                 <span class="input-group-addon"><a href="#" id="ytAdd">Añadir</a></span>
@@ -20,12 +23,13 @@
             </div>
             <div class="col-md-5 form-horizontal">
                 <div class="row form-group">
-                    <label class="col-sm-3control-label">Grupo: </label>
+                    <label class="col-sm-3 control-label">Grupo: </label>
                     <input id="ytBand" type="text"/>
                 </div>
                 <div class="row form-group">
                     <label class="col-sm-3 control-label">Disco: </label>
-                    <input id="ytDisk" type="text"/></div>
+                    <input id="ytDisk" type="text"/>
+                </div>
                 <div class="row form-group">
                     <label class="col-sm-3 control-label">Nº y titulo</label>
                     <input id="ytSongNumber" type="text" width="20px"/>
@@ -34,7 +38,7 @@
                 <div class="row form-group text-center">
                     <input id="ytSave" type="button" class="btn btn-default" value="Guardar"/>
                 </div>    
-                <input type="hidden" id="youtubeId"/>
+                <input type="hidden" id="ytId"/>
             </div>
             
            <div class="col-md-2"></div>

@@ -22,6 +22,7 @@ class TabernicolaJukeCloudExtension extends Extension implements PrependExtensio
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        $container->setParameter('tabernicola_juke_cloud.config', $config);
         $container->setParameter('tabernicola_juke_cloud.plugins', $config['plugins']);
         
         //YOUTUBE PLUGIN

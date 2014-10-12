@@ -1,3 +1,4 @@
 #youtube .container-fluid{padding: 5px}
 #youtube .row{padding: 5px}
 #ytSongNumber{width:40px}
+#ytDesc{max-height: 200px}

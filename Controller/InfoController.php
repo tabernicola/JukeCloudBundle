@@ -48,22 +48,36 @@ class InfoController extends Controller
         return $response->setData($node);
     }
     
-    private function getDiskCover($artist, $disk){
-        /*$discogs = $this->container->get('discogs');
-        $response=$discogs->search(
-            array('q'=>$artist->getName().' - '.$disk->getTitle())
-        )->getPath('results');
-        if (is_array($response) && count($response)){
+    private function getDiskCover(Artist $artist, Disk $disk){
+        $jcConfig = $this->container->getParameter('tabernicola_juke_cloud.config');
+        if (!isset($jcConfig['lastfm_apikey']) ||  !$jcConfig['lastfm_apikey'] ||
+            !isset($jcConfig['lastfm_secret']) || !$jcConfig['lastfm_secret']){
+            return '';
+        }
+        $lastFmApiKey=$jcConfig['lastfm_apikey'];
+        $lastFmSecret=$jcConfig['lastfm_secret'];
+        $lastfm = new \Dandelionmood\LastFm\LastFm( $lastFmApiKey, $lastFmSecret );
+        $response=$lastfm->album_search(array('album'=>$disk->getTitle()));
+        $albums=$response->results->albummatches;
+        $album=$image=null;
+        if(is_object($albums)){
+            $album=$albums->album;
+        }
+        
+        if (is_array($album)){
+            $album=$this->getBestMatchByArtistName($album, $artist->getName());
+        }
+        if ($album){
+            $image=$this->getBestImage($album->image);
+        }
+        if ($image){
             $root = $this->container->getParameter('tabernicola_juke_cloud.covers_dir');
             $em = $this->getDoctrine()->getManager();
             $fs = new Filesystem();
             $path='/'.date("Ym").'/'.$disk->getId().'.jpeg';
             
-            $resul=$response[0];
-            $thumb=str_replace("api.discogs.com","s.pixogs.com",$resul['thumb']);
             //$thumb=str_replace("R-90-","R-150-",$thumb);
-            print_r($resul);
-            $fs->copy($thumb,$root.$path);
+            $fs->copy($image,$root.$path);
             //$genres=  array_merge($resul['style'], $resul['genre']);
             if (file_exists($root.$path) && filesize($root.$path)>1024){
                 $disk->setCover($path);
@@ -71,8 +85,39 @@ class InfoController extends Controller
                 $em->flush();
                 return $path;
             }
-        }*/
-
+        }
         return false;
+    }
+    
+    private function getBestMatchByArtistName($albums, $artist){
+        $artist=  strtolower($artist);
+        $currentProximity=-1;
+        $currentMatches=-1;
+        $bestMatch=null;
+        foreach ($albums as $album){
+            
+            $matches=similar_text(strtolower($album->artist), $artist, $proximity);
+            if ($proximity>$currentProximity || ($proximity==$currentProximity && $matches==$currentMatches)){
+                $currentProximity=$proximity;
+                $currentMatches=$matches;
+                $bestMatch=$album;
+            }
+            if ($proximity>95){
+                break;
+            }
+        }
+        return $bestMatch;
+    }
+    
+    private function getBestImage($images){
+        $currentSizePriority=0;
+        $prioritys=array('large'=>2, 'extralarge'=>1);
+        $bestImage=null;
+        foreach ($images as $image){
+            if (isset($prioritys[$image->size]) && $prioritys[$image->size]>$currentSizePriority){
+                $bestImage=$image->{"#text"};
+            }
+        }
+        return $bestImage;
     }
 }

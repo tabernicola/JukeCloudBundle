@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Tabernicola\JukeCloudBundle\Form\DataTransformer\TextToArtistTransformer;
 use Tabernicola\JukeCloudBundle\Form\DataTransformer\TextToDiskTransformer;
 
-class SongType extends AbstractType
+class YoutubeSongType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -20,11 +20,11 @@ class SongType extends AbstractType
         $diskTransformer=new TextToDiskTransformer($em);
         $artistTransformer=new TextToArtistTransformer($em);
         $builder
+            ->add('ytId','text',array("mapped" => false))
             ->add('title')
             ->add('number')
             ->add($builder->create('disk','text')->addModelTransformer($diskTransformer))
             ->add($builder->create('artist','text')->addModelTransformer($artistTransformer))
-            ->add('files')
         ;
     }
     
@@ -36,7 +36,7 @@ class SongType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'Tabernicola\JukeCloudBundle\Entity\Song',
             'csrf_protection' => false,
-            'validation_groups' => array('Default','local'),
+            'validation_groups' => array('Default','extern')
         ))
         ->setRequired(array('em',))
         ->setAllowedTypes(array(

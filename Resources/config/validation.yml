@@ -3,11 +3,16 @@ Tabernicola\JukeCloudBundle\Entity\Song:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
             fields: [title, artist, disk]
             message: 'Esta canción ya existe en la libreria'
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+            fields: [path]
+            message: 'Ya existe una referencia a esta canción en la libreria'
+            groups: [extern]
     properties:
         file:
             - File:
                 maxSize: 15M
-                mimeTypesMessage: Please upload a valid Song
+                mimeTypesMessage: El archivo seleccionado no ha podido ser reconocido como archivo de audio/vídeo
+                groups: [local]
         title:
             - NotBlank: ~
         disk:

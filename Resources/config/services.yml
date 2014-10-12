@@ -15,4 +15,4 @@ services:
         
     tabernicola_juke_cloud.plugins.youtube:
         class: %tabernicola_juke_cloud.plugins.youtube.class%
-        arguments: [%tabernicola_juke_cloud.youtube_plugin.apikey%]
+        arguments: [@service_container, %tabernicola_juke_cloud.youtube_plugin.apikey%]
