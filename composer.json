@@ -25,7 +25,7 @@
         "nass600/get-id3": "dev-master",
         "dandelionmood/lastfm": "*",
         "liip/imagine-bundle": "1.0.*",
-        "madcoda/php-youtube-api" : "dev-master",
+        "madcoda/php-youtube-api" : "dev-master@dev",
         "components/jqueryui-theme-bootstrap": "dev-master"
     },
     "autoload": {
