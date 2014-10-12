@@ -22,11 +22,11 @@
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "blueimp/jquery-file-upload": "9.7.*",
         "stof/doctrine-extensions-bundle": "1.1.*",
-        "nass600/get-id3": "dev-master@dev",
+        "nass600/get-id3": "dev-master",
         "dandelionmood/lastfm": "*",
         "liip/imagine-bundle": "1.0.*",
         "madcoda/php-youtube-api" : "dev-master",
-        "components/jqueryui-theme-bootstrap": "@dev"
+        "components/jqueryui-theme-bootstrap": "dev-master@dev"
     },
     "autoload": {
         "psr-0" : {
