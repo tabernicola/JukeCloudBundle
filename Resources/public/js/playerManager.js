@@ -8,7 +8,6 @@ var playerManager = {
         if (this.currentType != type) {
             var Player = this.types[type];
             if (this.currentPlayer){
-                console.log("destroy "+ this.currentType);
                 $("#player")[this.types[this.currentType]]('destroy');
             }
             this.currentType = type;

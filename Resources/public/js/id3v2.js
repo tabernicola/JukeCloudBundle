@@ -448,7 +448,6 @@ ID3v2 = {
         function read_frame() {
             if (tag.revision < 3) {
                 read(3, function(frame_id) {
-                    //console.log(frame_id)
                     if (/[A-Z0-9]{3}/.test(frame_id)) {
                         var new_frame_id = TAG_MAPPING_2_2_to_2_3[frame_id.substr(0, 3)];
                         read_frame2(frame_id, new_frame_id);
@@ -459,7 +458,6 @@ ID3v2 = {
                 })
             } else {
                 read(4, function(frame_id) {
-                    //console.log(frame_id)
                     if (/[A-Z0-9]{4}/.test(frame_id)) {
                         read_frame3(frame_id);
                     } else {
@@ -513,7 +511,6 @@ ID3v2 = {
                     } else {
                         tag[frame_id] = cleanText(s)
                     }
-                    //console.log(tag)
                     read_frame();
                 })
             })
@@ -525,7 +522,6 @@ ID3v2 = {
                 read(2, function(s, version) {
                     tag.version = "ID3v2." + version[0] + '.' + version[1];
                     tag.revision = version[0];
-                    //console.log('version',tag.version);
                     read(1, function(s, flags) {
                         //todo: parse flags
                         flags = pad(flags[0]);

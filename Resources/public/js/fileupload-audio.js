@@ -74,10 +74,7 @@
 
             // Sets the audio element as a property of the file object:
             setId: function (data, options) {
-                console.log('setid');
                 if (data.id && !options.disabled) {
-                                    console.log(data.id);
-
                     data.files[data.index]['id'] = data.id;
                 }
                 return data;

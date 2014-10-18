@@ -34,9 +34,6 @@ $(document).ready(function(){
         },
         "dnd":{"copy": false},
         "plugins": [ "types", "wholerow", "dnd"]
-    }).on('changed.jstree', function(e, data) {
-        //console.log(data);
-        //console.log(e);
     });
     
     function filterLibrary(search){
@@ -73,7 +70,6 @@ $(document).ready(function(){
     
     $(document).on('dblclick','li[id^="song"] > a',function (e) {
         thePlaylist.addElement($(this).parent().attr('id'), $(thePlaylist.selector));
-        //console.log($("#player").data().jPlayer.status.paused);
     });
             
     $(document).on('dnd_move.vakata', function (e, data) {

@@ -155,7 +155,6 @@ $.extend(Playlist.prototype,{
                 t.trigger('jc.playlist.play-song');
             }
             catch(e){
-                console.log(e);
                 $(document).trigger('jc.playlist.error.play-song');
             }
         }

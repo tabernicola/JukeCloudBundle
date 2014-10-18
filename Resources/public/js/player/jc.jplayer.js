@@ -2,7 +2,7 @@
     // static function, making them public
     $.extend(true, $.jPlayer.prototype, {
         getStatus: function () { return this.data('jPlayer').status.media;},
-        setSong:function (song){ console.log(song);return this.setMedia({mp3: "/"+song });},
+        setSong:function (song){ return this.setMedia({mp3: "/"+song });},
         canPlay: function (type){ return (type == 'local')? true: false;}
     });
 })(jQuery);
