@@ -126,6 +126,9 @@ $.extend(Playlist.prototype,{
         
         $(elemHtml).insertAfter('#'+where);
         this.numElements++;
+        if (this.player == undefined){
+            this.player=playerManager.initPlayer(data.type);
+        }
         $('#'+newId).trigger('jc.playlist.new-element');
     },
     
