@@ -1,0 +1,14 @@
+<h4>Ultimas canciones añadidas</h4>
+<div id="jc-news-content" >
+    <div class="panel">
+        <div id="jc-news">
+            {% for song in songs %}
+            <p class="h5">
+                - <a href="#" class="playlist-link" data-id="song-{{song.id}}"><strong>{{song.title}}</strong></a>
+                del disco <a href="#" class="playlist-link" data-id="disk-{{song.disk.id}}">{{song.disk}}</a> 
+                por <a href="#" class="playlist-link" data-id="artist-{{song.artist.id}}">{{song.artist}}</a>
+            </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>    

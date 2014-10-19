@@ -75,6 +75,10 @@ var Playlist= function(selector){
     $('#play-prev').bind("click",function( event ) {
         playlist.playPrev();
     })
+    
+    $(document).on('click','.playlist-link',function (e) {
+        thePlaylist.addElement($(this).data('id'), $(thePlaylist.selector));
+    });
 }
 
 $.extend(Playlist.prototype,{

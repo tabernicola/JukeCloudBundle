@@ -4,6 +4,7 @@ parameters:
     tabernicola_juke_cloud.plugins.init_info.class: Tabernicola\JukeCloudBundle\Plugin\InitInfoPlugin
     tabernicola_juke_cloud.plugins.local.class: Tabernicola\JukeCloudBundle\Plugin\LocalPlugin
     tabernicola_juke_cloud.plugins.youtube.class: Tabernicola\JukeCloudBundle\Plugin\YoutubePlugin
+    tabernicola_juke_cloud.plugins.news.class: Tabernicola\JukeCloudBundle\Plugin\NewsPlugin
     
 services:
     tabernicola_juke_cloud.plugins.init_info:
@@ -16,3 +17,7 @@ services:
     tabernicola_juke_cloud.plugins.youtube:
         class: %tabernicola_juke_cloud.plugins.youtube.class%
         arguments: [@service_container, %tabernicola_juke_cloud.youtube_plugin.apikey%]
+        
+    tabernicola_juke_cloud.plugins.news:
+        class: %tabernicola_juke_cloud.plugins.news.class%
+        arguments: [@service_container]
