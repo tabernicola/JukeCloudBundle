@@ -147,7 +147,7 @@ class Artist
     }
     
     public function __toString() {
-        return "\nArtist: ".$this->getName();
+        return $this->getName();
     }
     /**
      * @var string

@@ -170,7 +170,7 @@ class Disk
     }
     
     public function __toString() {
-        return "\nDisk: ".$this->getTitle();
+        return $this->getTitle();
     }
 
     /**

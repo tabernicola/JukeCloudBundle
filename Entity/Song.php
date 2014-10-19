@@ -265,7 +265,7 @@ class Song
     }
     
     public function __toString() {
-        return "\nSong: ".$this->getTitle().$this->getArtist().$this->getDisk();
+        return $this->getTitle();
     }
 
     /**
