@@ -58,17 +58,20 @@ $.jukeCloudYoutubePlayer = function (options, element) {
 $.jukeCloudYoutubePlayer.prototype = {
     mediaReady: false,
     setSong: function (mediaObj) {
+        console.log("setsong");
         this.mediaReady = false;
         this.media = mediaObj;
     },
     play: function () {
         if (this.mediaReady) {
-
             $("#play").hide();
             $('#pause').show();
             this.player.playVideo();
         } else {
             var self = this;
+            if (!this.media){
+                return this.onPlayerError("No media");
+            } 
             $.get('/' + this.media, function (data) {
                 if (self.player){
                     clearInterval(self.timer);
