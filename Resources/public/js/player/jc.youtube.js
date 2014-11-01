@@ -58,7 +58,6 @@ $.jukeCloudYoutubePlayer = function (options, element) {
 $.jukeCloudYoutubePlayer.prototype = {
     mediaReady: false,
     setSong: function (mediaObj) {
-        console.log("setsong");
         this.mediaReady = false;
         this.media = mediaObj;
     },

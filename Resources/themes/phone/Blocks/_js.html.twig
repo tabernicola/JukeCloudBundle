@@ -1,0 +1,34 @@
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset(components_folder ~ 'jquery/jquery.min.js') }}"></script>
+<script src="{{ asset(components_folder ~ 'bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset(components_folder ~ 'jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset(components_folder ~ 'jquery-ui/ui/minified/slider.min.js') }}"></script>
+<script src="{{ asset('bundles/tabernicolajukecloud/js/id3v2.js') }}"></script>
+<script src="{{ asset('bundles/tabernicolajukecloud/js/playerManager.js') }}"></script>
+
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script src="{{ asset('bundles/tabernicolajukecloud/js/template.js')}}"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="/blueimp-fileupload/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="/blueimp-fileupload/js/jquery.fileupload.js"></script>
+<!-- The File Upload processing plugin -->
+<script src="/blueimp-fileupload/js/jquery.fileupload-process.js"></script>
+<!-- The File Upload audio preview plugin -->
+<script src="{{ asset('bundles/tabernicolajukecloud/js/fileupload-audio.js') }}"></script>
+<!-- The File Upload video preview plugin 
+<script src="js/jquery.fileupload-video.js"></script>-->
+<!-- The File Upload validation plugin -->
+<script src="/blueimp-fileupload/js/jquery.fileupload-validate.js"></script>
+<!-- The File Upload user interface plugin -->
+<script src="/blueimp-fileupload/js/jquery.fileupload-ui.js"></script>
+<script src="https://raw.githubusercontent.com/mattbryson/TouchSwipe-Jquery-Plugin/master/jquery.touchSwipe.min.js"></script>
+<script src="https://raw.githubusercontent.com/davidaurelio/TouchScroll/master/dist/touchscroll.min.js"></script>
+
+<script src="{{ asset('bundles/tabernicolajukecloud/js/playlist.js') }}"></script>
+<script src="{{ asset('bundles/tabernicolajukecloud/js/library.mobile.js') }}"></script>
+
+<script src="{{ asset('bundles/tabernicolajukecloud/js/info.js') }}"></script>
+
+{{ render(controller('TabernicolaJukeCloudBundle:Plugin:javascript')) }}
+

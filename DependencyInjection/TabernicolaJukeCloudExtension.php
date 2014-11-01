@@ -44,17 +44,6 @@ class TabernicolaJukeCloudExtension extends Extension implements PrependExtensio
         if (!isset($bundles['LiipImagineBundle'])) {
             // disable AcmeGoodbyeBundle in bundles
             $config = array('use_covers' => false);
-            /*foreach ($container->getExtensions() as $name => $extension) {
-                switch ($name) {
-                    case 'acme_something':
-                    case 'acme_other':
-                        // set use_acme_goodbye to false in the config of acme_something and acme_other
-                        // note that if the user manually configured use_acme_goodbye to true in the
-                        // app/config/config.yml then the setting would in the end be true and not false
-                        $container->prependExtensionConfig($name, $config);
-                        break;
-                }
-            }*/
         }
 
         // process the configuration of AcmeHelloExtension
@@ -65,7 +54,7 @@ class TabernicolaJukeCloudExtension extends Extension implements PrependExtensio
         // check if entity_manager_name is set in the "acme_hello" configuration
         $rootdir=$container->getParameter('kernel.root_dir');
         //$datadir=$container->getParameter('tabernicola_juke_cloud.datadir');
-        $liip=array(
+        $liipImagine=array(
             'filter_sets'=>array(
                 'navcover'=>array(
                     'filters'=>array(
@@ -93,7 +82,15 @@ class TabernicolaJukeCloudExtension extends Extension implements PrependExtensio
             'cache'=> 'default'
         );
         
+        $liipTheme=array(
+            'themes'=> array('web', 'tablet', 'phone'),
+            'active_theme'=> 'web',
+            'autodetect_theme'=>true,
+            'load_controllers'=>false
+        );
+        
         // prepend the acme_something settings with the entity_manager_name
-        $container->prependExtensionConfig("liip_imagine",  $liip);
+        $container->prependExtensionConfig("liip_imagine",  $liipImagine);
+        $container->prependExtensionConfig("liip_theme",  $liipTheme);
     }
 }

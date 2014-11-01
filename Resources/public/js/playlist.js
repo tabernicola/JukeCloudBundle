@@ -84,7 +84,7 @@ var Playlist= function(selector){
 $.extend(Playlist.prototype,{
     
     //Add element to the playlist
-    addElement: function(value, where){
+    addElement: function(value, where, play){
         var element;
         var newId='temp-'+(this.tempId++);
         var elemHtml='<div id="'+newId+'" class="list-group droppable-element">'+
@@ -102,8 +102,12 @@ $.extend(Playlist.prototype,{
 
         element.playlist=this;
         element.updateElementInfo = function(data){
-            for(key in data){
-                this.playlist.addSong(data[key],newId);
+            for(var i = data.length - 1; i >= 0; i--){
+                if (i==0){
+                    this.playlist.addSong(data[i],newId, play);
+                } else {
+                    this.playlist.addSong(data[i],newId, false);
+                }
             }
             this.playlist.removeSong(newId);
         }
@@ -117,7 +121,7 @@ $.extend(Playlist.prototype,{
         });
     },
     
-    addSong: function(data, where){
+    addSong: function(data, where, play){
         var newId='jc-pe-'+(this.nextId++);
         var elemHtml=
         '<div id="'+newId+'" class="list-group droppable-element" data-type="'+data.type+'" data-element="'+data.id+'">\n\
@@ -133,12 +137,22 @@ $.extend(Playlist.prototype,{
         if (this.player == undefined){
             this.player=playerManager.initPlayer(data.type);
         }
+        if(play){
+            console.log(newId);
+            this.playSong(newId)
+        }
         $('#'+newId).trigger('jc.playlist.new-element');
     },
     
     removeSong: function(id){
         $('#'+id).remove();
         this.numElements--;
+        $(this.selector).selectable( "refresh" );
+    },
+    
+    clear: function(){
+        this.numElements=0;
+        $(this.selector).html( "" );
         $(this.selector).selectable( "refresh" );
     },
     

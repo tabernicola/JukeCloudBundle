@@ -1,0 +1,58 @@
+<html class="ext-strict x-viewport" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>{%block title %}JukeCloud mobile theme{% endblock %}</title>
+        {%block metas %}
+            {{ include('TabernicolaJukeCloudBundle:Blocks:_metas.html.twig')}}
+        {% endblock %}
+
+        {% block styles %}
+            {{ include('TabernicolaJukeCloudBundle:Blocks:_css.html.twig')}}
+        {% endblock %}
+    </head>
+    <body>
+        <!--CONTROLS-->
+        {%block controls %}
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                {{ include('TabernicolaJukeCloudBundle:Blocks:_controls.html.twig')}}
+            </div> 
+        </div>    
+        {% endblock %}
+
+        <div id="main-panel" class="container tab-content">
+                <!--nav (left column)--> 
+                {%block nav %}
+                    <div id="library" class="tab-pane active col-sm-12">   
+                        {{ include('TabernicolaJukeCloudBundle:Blocks:_nav.html.twig')}}
+                    </div>
+                {% endblock %}
+                <!--BROWSER (central column -->
+                {%block browser %}
+                    <div id="info" class="tab-pane col-sm-12">
+                        {{ include('TabernicolaJukeCloudBundle:Blocks:_browser.html.twig')}}
+                    </div>
+                {% endblock %}
+                <!--Playlist cover lirycs (right column)-->
+                {%block playlist %}
+                    <div id="playlist" class="tab-pane col-sm-12">    
+                        {{ include('TabernicolaJukeCloudBundle:Blocks:_playlist.html.twig')}}
+                    </div>
+                {% endblock %}
+        </div>
+        {%block menu %}
+        <div id="menu" class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+            <div class="container-fluid">
+                <ul id="menu" class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#library"  role="tab" data-toggle="tab">Libreria</a></li>
+                    <li><a href="#info" role="tab" data-toggle="tab">Info</a></li>
+                    <li><a href="#playlist" role="tab" data-toggle="tab">Playlist</a></li>
+                </ul>
+            </div> 
+        </div>    
+        {% endblock %}
+        
+        {% block javascript %}
+            {{ include('TabernicolaJukeCloudBundle:Blocks:_js.html.twig')}}
+        {% endblock %}
+    </body>
+</html>

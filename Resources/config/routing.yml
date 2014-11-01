@@ -88,3 +88,7 @@ tabernicola_juke_cloud_plugin_action:
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
+    
+liip_theme:
+    resource: "@LiipThemeBundle/Resources/config/routing.xml"
+    prefix: /theme
