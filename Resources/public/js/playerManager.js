@@ -20,7 +20,6 @@ var playerManager = {
     sendMessageToPlayer: function (type, msg, parameters) {
         var Player = this.types[type];
         return (Player ? $("#player")[Player](msg, parameters) : null);
-
     },
     registerPlayer: function (type, Player, options) {
 
