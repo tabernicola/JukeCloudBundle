@@ -20,13 +20,20 @@
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    overflow: auto;
+    overflow-x: auto;overflow-y: auto;
 }
-.panel-body{height: 100%}
+#library{overflow: visible;}
+#library > div{overflow: auto;}
+.panel-body{height: 100%;padding: 5px 10px 5px 5px}
 
 .btn-half{display:block;width: 50%}
 .btn-half.first{float:left}
 #menu {background-color: #111111}
 #menu li{width:33%}
-#main-panel> div {padding: 5px; height: 100%}
-.well{ height: 100%}
+#main-panel> div {padding: 5px; height: 100%; overflow: visible}
+.well{ height: 100%; padding: 5px}
+.browser-info span{font-size: 15px;padding: 5px; }
+#info-panel{height: 60px; margin: 0px}
+#info .well .panel-body{padding: 0px !important}
+#accordion{height: 80%}
+#browser-video{float:none;padding-left: 10%}

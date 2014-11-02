@@ -160,6 +160,7 @@ $.extend(Playlist.prototype,{
         t=$('#'+id);
         if (t){
             try{
+                console.log('play '+id);
                 var type=t.data().type;
                 this.player=playerManager.initPlayer(type);
                 playerManager.sendMessageToPlayer(type, "setSong",t.data().element);
@@ -173,6 +174,7 @@ $.extend(Playlist.prototype,{
                 t.trigger('jc.playlist.play-song');
             }
             catch(e){
+                console.log(e);
                 $(document).trigger('jc.playlist.error.play-song');
             }
         }

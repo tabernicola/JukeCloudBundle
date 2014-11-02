@@ -36,7 +36,7 @@ body {
 .volume-background{position: absolute;top: 20px;left: 15px;}
 
 
-.panel-body{padding:0px;overflow-x: auto;overflow-y: auto;height:89%;}
+#library, #playlist, #accordion{padding:0px;overflow-x: auto;overflow-y: auto;height:89%;}
 
 .artist-list {padding: 0em;}
 .disk-list {margin-left: 4em;}
