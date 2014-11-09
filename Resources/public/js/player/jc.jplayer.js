@@ -126,6 +126,6 @@ playerManager.registerPlayer('local', "jPlayer", {
         gui: "#gui",
         noSolution: "#no-solution"
     },
-    swfPath: "/extern/jplayer/jquery.jplayer/",
+    swfPath: "/extern/jPlayer/jquery.jplayer/",
     supplied: "mp3"		
 } );

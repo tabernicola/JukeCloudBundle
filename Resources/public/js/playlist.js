@@ -68,6 +68,10 @@ var Playlist= function(selector){
         $('#active-repeat').show();
     })
     
+    $('#clear-playlist').bind("click",function( event ) {
+        playlist.clear();
+    })
+    
     $('#play-next').bind("click",function( event ) {
         playlist.playNext();
     })
@@ -138,13 +142,15 @@ $.extend(Playlist.prototype,{
             this.player=playerManager.initPlayer(data.type);
         }
         if(play){
-            console.log(newId);
             this.playSong(newId)
         }
         $('#'+newId).trigger('jc.playlist.new-element');
     },
     
     removeSong: function(id){
+        if (this.activeElement==id){
+            this.activeElement=$('#'+this.activeElement).prev().attr('id')
+        }
         $('#'+id).remove();
         this.numElements--;
         $(this.selector).selectable( "refresh" );
@@ -154,13 +160,13 @@ $.extend(Playlist.prototype,{
         this.numElements=0;
         $(this.selector).html( "" );
         $(this.selector).selectable( "refresh" );
+        this.activeElement=false;
     },
     
     playSong: function(id){
         t=$('#'+id);
         if (t){
             try{
-                console.log('play '+id);
                 var type=t.data().type;
                 this.player=playerManager.initPlayer(type);
                 playerManager.sendMessageToPlayer(type, "setSong",t.data().element);

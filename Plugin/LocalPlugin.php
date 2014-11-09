@@ -22,7 +22,7 @@ class LocalPlugin extends AbstractPlaylistPlugin {
 
     public function getJavascriptFiles() {
         return array(
-            $this->componentsFolder . 'jplayer/jquery.jplayer/jquery.jplayer.js',
+            $this->componentsFolder . 'jPlayer/jquery.jplayer/jquery.jplayer.js',
             "bundles/tabernicolajukecloud/js/player/jc.jplayer.js"
         );
     }

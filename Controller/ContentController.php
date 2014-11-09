@@ -16,7 +16,10 @@ class ContentController extends Controller
         $song = $em->getRepository('TabernicolaJukeCloudBundle:Song')->findOneById($id);
         if (!$song) {
             throw $this->createNotFoundException('No song with id '.$id);
-        }   
+        }
+        $song->setPlayTimes($song->getPlayTimes()+1);
+        $em->persist($song);
+        $em->flush();
 
         $plugin = $this->container->get('tabernicola_juke_cloud.plugins.'.$song->getType());
         return $plugin->getContent($song);

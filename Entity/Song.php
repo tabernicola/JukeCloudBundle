@@ -70,6 +70,11 @@ class Song
     private $path;
 
     /**
+     * @var integer
+     */
+    private $playTimes;
+
+    /**
      * Set id
      *
      * @param integer $id
@@ -358,5 +363,29 @@ class Song
     public function getType()
     {
         return $this->type;
+    }
+
+
+    /**
+     * Set playTimes
+     *
+     * @param integer $playTimes
+     * @return Song
+     */
+    public function setPlayTimes($playTimes)
+    {
+        $this->playTimes = $playTimes;
+
+        return $this;
+    }
+
+    /**
+     * Get playTimes
+     *
+     * @return integer 
+     */
+    public function getPlayTimes()
+    {
+        return $this->playTimes;
     }
 }

@@ -1,4 +1,4 @@
-#center-panel,#duration-container, #mute-container, #unmute-container, #volume-bar-container, .album-cover{display:none}
+#center-panel,#duration-container, #mute-container, #unmute-container, #volume-bar-container{display:none}
 #progress-bar .jp-progress{width: 80px}
 .panel{width:100%;padding: 5px;margin:0px;border:0px;position: static }
 /*.panel-heading{padding: 2px;}
@@ -37,3 +37,10 @@
 #info .well .panel-body{padding: 0px !important}
 #accordion{height: 80%}
 #browser-video{float:none;padding-left: 10%}
+#browser-info-cover {width:auto; height: 60px}
+
+#clear-playlist{position: absolute; right: 10px; color: black}
+#clear-playlist:hover{text-decoration: none !important}
+#clear-playlist .list-icon{font-size: 22px; padding-right: 8px; padding-top: 2px}
+#clear-playlist .times-icon{font-size: 14px; padding-left:14px; padding-top: 9px}
+#library, #playlist-container, #accordion{height:84%;}

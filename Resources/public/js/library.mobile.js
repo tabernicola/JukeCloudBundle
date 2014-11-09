@@ -13,39 +13,43 @@ var dataUrlFunction=function(node){
 }
 
 $(document).ready(function(){
+    $("#artist-selector").removeClass('hide').addClass("fa fa-spinner fa-spin loading");
     $.get('/ajax/artists/',null,function(response){
         for (var i in response){
             $("#artist-list").append($('<option>', {'value': response[i].id, 'text':response[i].text}))
         }
+        $("#artist-selector").removeClass("fa fa-spinner fa-spin loading");
     },'json');
     
     $("#artist-list").change(function(){
         var id=$("#artist-list option:selected").val();
         if (id!=0){
+            $('#disk-selector').removeClass('hide').addClass("fa fa-spinner fa-spin loading");;
             $.get('/ajax/'+id,null,function(response){
                 $('#disk-list option[value!="0"]').remove();
                 for (var i in response){
                     $("#disk-list").append($('<option>', {'value': response[i].id, 'text':response[i].text}))
                 }
-                $('.disk-selector').removeClass('hide');
+                $('#disk-selector').removeClass("fa fa-spinner fa-spin loading");;
             },'json');
         } else{
-            $('.disk-selector').addClass('hide');
+            $('#disk-selector').addClass('hide');
         }
     });
     
     $("#disk-list").change(function(){
         var id=$("#disk-list option:selected").val();
         if (id!=0){
+            $('#song-selector').removeClass('hide').addClass("fa fa-spinner fa-spin loading");
             $.get('/ajax/'+id,null,function(response){
                 $('#song-list option[value!="0"]').remove();
                 for (var i in response){
                     $("#song-list").append($('<option>', {'value': response[i].id, 'text':response[i].text}))
                 }
-                $('.song-selector').removeClass('hide');
+                $('#song-selector').removeClass("fa fa-spinner fa-spin loading");
             },'json');
         } else{
-            $('.song-selector').addClass('hide');
+            $('#song-selector').addClass('hide');
         }
     });
     

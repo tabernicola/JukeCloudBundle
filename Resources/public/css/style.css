@@ -36,8 +36,7 @@ body {
 .volume-background{position: absolute;top: 20px;left: 15px;}
 
 
-#library, #playlist, #accordion{padding:0px;overflow-x: auto;overflow-y: auto;height:89%;}
-
+#library, #playlist-container, #accordion{padding:0px;overflow-x: auto;overflow-y: auto;height:89%;}
 .artist-list {padding: 0em;}
 .disk-list {margin-left: 4em;}
 .song-list {margin-left: 8em;}
@@ -95,6 +94,10 @@ body {
 .ui-autocomplete {z-index: 1100;}
 
 #disable-shuffle, #disable-repeat{display:none}
+#clear-playlist{position: fixed; right: 15px; color: black}
+#clear-playlist:hover{text-decoration: none !important}
+#clear-playlist .list-icon{font-size: 22px; padding-right: 8px; padding-top: 2px}
+#clear-playlist .times-icon{font-size: 14px; padding-left:14px; padding-top: 9px}
 
 #center-panel .well{padding-top: 0px}
 #center-panel .panel{position:initial;top:auto}
@@ -102,9 +105,12 @@ body {
 #info-panel{height:110px;border-color: #ddd;margin:10;background-color: #e8eff7;border-radius: 10px}
 .browser-cover,#browser-video{float: left;padding-right: 10px}
 .browser-cover img{width:90px}
-.browser-info p{font-size: 12px;margin-bottom: 0px }
-.browser-info span{font-size: 20px;padding-left: 10px}
+.browser-info p{font-size: 12px;margin-bottom: 0px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.browser-info span{font-size: 20px;padding-left: 10px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 
 .browser-plugin-container{margin-left: 10;margin-right: 10;margin-bottom:5;}
 .browser-plugin-header{background-color: #e8eff7;border-color: #ddd;color: #333;border-top-left-radius: 8px;border-top-right-radius: 8px;}
 .browser-plugin-body{padding: 15px;background-color: #ffffff;border-bottom-right-radius: 8px;border-bottom-left-radius : 8px;}
+
+.loading{margin-left: 40%; font-size: 40px}
+.loading *{display: none}

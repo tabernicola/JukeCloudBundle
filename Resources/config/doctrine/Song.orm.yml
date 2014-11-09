@@ -50,6 +50,9 @@ Tabernicola\JukeCloudBundle\Entity\Song:
             length: 16
             options:
                 default: local
+        playTimes:
+            type: integer
+            default: 0
     manyToOne:
         disk:
             targetEntity: Disk

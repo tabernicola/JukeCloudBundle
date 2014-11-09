@@ -57,7 +57,7 @@ class InfoController extends Controller
         $lastFmApiKey=$jcConfig['lastfm_apikey'];
         $lastFmSecret=$jcConfig['lastfm_secret'];
         $lastfm = new \Dandelionmood\LastFm\LastFm( $lastFmApiKey, $lastFmSecret );
-        $response=$lastfm->album_search(array('album'=>$disk->getTitle()));
+        $response=$lastfm->album_search(array('album'=> $artist->getName().' '. $disk->getTitle()));
         $albums=$response->results->albummatches;
         $album=$image=null;
         if(is_object($albums)){
